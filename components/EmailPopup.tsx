@@ -9,7 +9,9 @@ interface EmailPopupProps {
 
 export const EmailPopup: React.FC<EmailPopupProps> = ({ isOpen, onClose }) => {
     const [copied, setCopied] = useState(false);
-    const email = "mark@soots.ai";
+    const user = "mark";
+    const domain = "soots.ai";
+    const email = `${user}@${domain}`;
 
     if (!isOpen) return null;
 
@@ -53,7 +55,11 @@ export const EmailPopup: React.FC<EmailPopupProps> = ({ isOpen, onClose }) => {
                 <div className="flex flex-col gap-4">
                     <div className="relative">
                         <div className="flex items-center justify-between border-2 border-gray-200 bg-gray-50 p-4 font-mono text-lg text-charcoal">
-                            {email}
+                            <span>
+                                {user}
+                                <span className="text-gray-300 select-none">@</span>
+                                {domain}
+                            </span>
                             <button
                                 onClick={handleCopy}
                                 className="text-gray-400 hover:text-blueprint-blue transition-colors p-2"
