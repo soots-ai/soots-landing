@@ -16,14 +16,27 @@ const ROTATING_TERMS = [
 ];
 
 export const Hero: React.FC<HeroProps> = ({ onOpenPopup }) => {
-  const [termIndex, setTermIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTermIndex((prev) => (prev + 1) % ROTATING_TERMS.length);
-    }, 2500); // Cycle every 2.5 seconds
+      setIsAnimating(true);
+
+      // Wait for animation to finish before swapping state
+      setTimeout(() => {
+        setIsAnimating(false);
+        setCurrentIndex((prev) => (prev + 1) % ROTATING_TERMS.length);
+      }, 800); // Matches animation duration
+
+    }, 3000); // Cycle every 3 seconds
+
     return () => clearInterval(interval);
   }, []);
+
+  const currentTerm = ROTATING_TERMS[currentIndex];
+  // Calculate next term safely
+  const nextTerm = ROTATING_TERMS[(currentIndex + 1) % ROTATING_TERMS.length];
 
   return (
     <div className="relative w-full min-h-screen flex items-center bg-cream grid-bg pt-24 pb-12 overflow-hidden">
@@ -47,15 +60,40 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPopup }) => {
             </span>
           </h1>
 
-          <p className="text-lg font-sans text-gray-600 mb-10 max-w-2xl leading-relaxed border-l-4 border-gray-200 pl-6">
-            The operational intelligence layer that bridges the gap between <span className="font-bold text-charcoal">Sales Teams</span> and{" "}
-            <span key={ROTATING_TERMS[termIndex]} className="font-bold text-charcoal animate-fade-in-up inline-block min-w-[220px]">
-              {ROTATING_TERMS[termIndex]}.
-            </span>
-            <span className="block mt-4 font-mono text-sm text-blueprint-blue">
+          <div className="text-lg font-sans text-gray-600 mb-10 max-w-2xl leading-relaxed border-l-4 border-gray-200 pl-6 block">
+            <span>The operational intelligence layer that bridges the gap between <span className="font-bold text-charcoal">Sales Teams</span> and</span>
+
+            {/* Sticky Note Stack Container */}
+            <div className="relative inline-block w-[240px] h-[40px] align-middle ml-2">
+
+              {/* Bottom Note (Next Item) - Animates to become the new "Top" */}
+              <div className={`absolute inset-0 border flex items-center justify-center p-1 z-10 transition-all duration-500 ease-in-out ${isAnimating
+                  ? 'bg-[#fefce8] border-yellow-300 shadow-md rotate-[1deg]'
+                  : 'bg-yellow-100 border-yellow-200 shadow-sm rotate-[-2deg]'
+                }`}>
+                <span className={`font-handwriting text-xl text-charcoal whitespace-nowrap transition-transform duration-500 ${isAnimating ? 'rotate-[0deg]' : 'rotate-[-1deg]'
+                  }`}>
+                  {nextTerm}
+                </span>
+              </div>
+
+              {/* Top Note (Current Item) - Animates away */}
+              {/* Key hack: When not animating, show current. When animating, this is the 'old' current falling away. */}
+              <div className={`absolute inset-0 bg-[#fefce8] border border-yellow-300 shadow-md rotate-[1deg] flex items-center justify-center p-1 z-20 ${isAnimating ? 'animate-note-fall pointer-events-none' : ''}`}>
+                <span className="font-handwriting text-xl text-charcoal rotate-[0deg] whitespace-nowrap">
+                  {currentTerm}
+                </span>
+              </div>
+
+              {/* Hint of a third note for stack depth */}
+              <div className="absolute inset-0 top-1 left-1 bg-yellow-50 border border-yellow-100 shadow-sm rotate-[3deg] -z-10"></div>
+            </div>
+
+
+            <span className="block mt-4 font-mono text-sm text-blueprint-blue w-full">
             // Sales Data to Operational Plan
             </span>
-          </p>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Button onClick={onOpenPopup}>REQUEST EARLY ACCESS</Button>
