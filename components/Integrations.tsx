@@ -254,22 +254,22 @@ export const Integrations: React.FC = () => {
 
       {/* Footer / Value Prop */}
       <div className="max-w-7xl mx-auto mt-12 text-center px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-white border border-charcoal px-6 md:px-12 py-4 rounded-xl md:rounded-full shadow-lg w-full">
-          <div className="flex items-center gap-2 text-left md:border-r border-gray-300 pb-2 md:pb-0 md:pr-12 w-full md:w-auto flex-1 justify-center md:justify-start">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-0 md:gap-4 bg-white border border-charcoal px-6 md:px-12 py-4 rounded-xl md:rounded-full shadow-lg w-full">
+          <div className="flex items-center gap-2 text-left md:border-r border-gray-300 border-b md:border-b-0 py-4 md:py-0 md:pr-12 w-full md:w-auto flex-1 justify-start">
             <Server size={20} className="text-gray-400 flex-shrink-0" />
             <div>
               <div className="font-bold text-xs text-charcoal">ZERO MIGRATION</div>
               <div className="text-[10px] text-gray-500 font-mono">Keep your database</div>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-left md:border-r border-gray-300 pb-2 md:pb-0 md:pr-12 w-full md:w-auto flex-1 justify-center md:justify-start">
+          <div className="flex items-center gap-2 text-left md:border-r border-gray-300 border-b md:border-b-0 py-4 md:py-0 md:pr-12 w-full md:w-auto flex-1 justify-start">
             <Globe size={20} className="text-gray-400 flex-shrink-0" />
             <div>
               <div className="font-bold text-xs text-charcoal">ZERO TRAINING</div>
               <div className="text-[10px] text-gray-500 font-mono">Teams use existing tools</div>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-left w-full md:w-auto flex-1 justify-center md:justify-start">
+          <div className="flex items-center gap-2 text-left w-full md:w-auto flex-1 justify-start py-4 md:py-0">
             <ArrowUpRight size={20} className="text-high-vis-orange flex-shrink-0" />
             <div>
               <div className="font-bold text-xs text-charcoal">INSTANT VALUE</div>
