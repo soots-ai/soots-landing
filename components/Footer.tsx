@@ -21,7 +21,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPopup }) => {
       </div>
 
       <div className="mt-24 border-t border-gray-300 pt-8 flex justify-between items-center text-xs text-gray-400 font-mono">
-        <span>© 2025 SOOTS</span>
+        <span>© 2026 SOOTS</span>
         <span>ENGINEERED IN NL</span>
       </div>
     </Section>
