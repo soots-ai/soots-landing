@@ -6,8 +6,8 @@ export const RiskDetection: React.FC = () => {
   return (
     <Section className="bg-charcoal text-white">
       <div className="mb-12 border-l-4 border-high-vis-orange pl-6">
-        <h2 className="text-3xl md:text-4xl font-bold font-sans text-white">The Killer Feature</h2>
-        <p className="text-gray-400 mt-2 font-mono uppercase tracking-widest">Semantic Risk Detection</p>
+        <h2 className="text-3xl md:text-4xl font-bold font-sans text-white">Risk Detection & Governance Layer</h2>
+        <p className="text-gray-400 mt-2 font-mono uppercase tracking-widest">Semantic Analysis of Commitments & Scope</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

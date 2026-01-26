@@ -51,9 +51,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPopup }) => {
           </div>
 
           <h1 className="text-5xl lg:text-7xl font-sans font-extrabold text-charcoal mb-8 leading-[1.1]">
-            Don’t Start <br />
+            The Context Engine<br />
+            For the
             <span className="relative">
-              From Scratch.
+              Sales-to-Delivery Gap.
               <svg className="absolute -bottom-2 left-0 w-full h-3 text-high-vis-orange" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.00025 7.00005C50.6015 3.7381 120.306 -1.26875 198.003 3.50005" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
               </svg>
@@ -61,7 +62,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPopup }) => {
           </h1>
 
           <div className="text-lg font-sans text-gray-600 mb-10 max-w-2xl leading-relaxed border-l-4 border-gray-200 pl-6 block">
-            <span>The operational intelligence layer that bridges the gap between <span className="font-bold text-charcoal">Sales Teams</span> and</span>
+            <span>Eliminate the Reconstruction Phase by turning unstructured sales data into structured delivery plans. Bridge the gap between <span className="font-bold text-charcoal">Sales Teams</span> and</span>
 
             {/* Sticky Note Stack Container */}
             <div className="relative inline-block w-[240px] h-[40px] align-middle ml-2">
@@ -105,7 +106,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPopup }) => {
         </div>
 
         {/* RIGHT: The "Rectification Engine" Visual */}
-        <div className="w-full md:w-1/2 h-[420px] md:h-[520px] relative flex justify-center items-center">
+        <div className="w-full md:w-1/2 h-[420px] md:h-[520px] relative flex justify-center items-center" 
+             role="img" 
+             aria-label="Blueprint diagram showing unstructured sales data resolving into a structured delivery brief via Soots Context Engine">
           {/* Container Frame */}
           <div className="relative w-full max-w-md h-full border-x-2 border-dashed border-gray-300 bg-white/50 backdrop-blur-sm overflow-hidden flex flex-col items-center">
 
