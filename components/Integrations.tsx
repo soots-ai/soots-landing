@@ -133,7 +133,7 @@ export const Integrations: React.FC = () => {
       {/* Header */}
       <div className="text-center mb-16 relative z-10 max-w-4xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-sans font-bold text-charcoal mb-6">
-          The Intelligence Layer that <br />Sits On Top.
+          The Intelligence Layer that <br />connects your existing data sources.
         </h2>
         <p className="text-lg text-gray-600 font-sans max-w-2xl mx-auto leading-relaxed">
           Soots acts as an ever-growing brain of your customer. We ingest unstructured data from your entire ecosystem, without replacing a single tool.
