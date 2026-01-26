@@ -6,8 +6,8 @@ export const HowItWorks: React.FC = () => {
   return (
     <Section>
       <div className="text-center mb-24">
-        <h2 className="text-4xl font-bold font-sans text-charcoal">Ingest, Map, Use</h2>
-        <p className="text-blueprint-blue mt-2 font-mono">HOW THE CONTEXT ENGINE WORKS</p>
+        <h2 className="text-4xl font-bold font-sans text-charcoal">The Engine</h2>
+        <p className="text-blueprint-blue mt-2 font-mono">SOOTS CONTEXTUALIZATION LAYER</p>
       </div>
 
       <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-12 md:gap-0">

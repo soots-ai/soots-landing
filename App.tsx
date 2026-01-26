@@ -5,7 +5,6 @@ import { PainTimeline } from './components/PainTimeline';
 import { HowItWorks } from './components/HowItWorks';
 import { RiskDetection } from './components/RiskDetection';
 import { Integrations } from './components/Integrations';
-import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
 import { EmailPopup } from './components/EmailPopup';
 
@@ -34,7 +33,6 @@ export default function App() {
         <HowItWorks />
         <RiskDetection />
         <Integrations />
-        <FAQ />
       </main>
 
       <Footer onOpenPopup={togglePopup} />
