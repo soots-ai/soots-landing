@@ -44,7 +44,7 @@ export const ProblemSplit: React.FC = () => {
             </div>
 
             {/* Context Lost Annotation */}
-            <div className="absolute top-[65%] left-[55%] md:left-[54%] transform">
+            <div className="absolute top-[58%] left-[55%] md:left-[54%] transform">
                <div className="font-handwriting text-sm md:text-lg text-[#CC0000] rotate-[-5deg] whitespace-nowrap">Context Lost!</div>
             </div>
 
@@ -89,9 +89,8 @@ export const ProblemSplit: React.FC = () => {
             </svg>
 
             {/* Floating Detail Cards (Absolute HTML on top of SVG) - Hidden on mobile to save space */}
-            <div className="absolute top-[10%] left-[10%] md:left-[20%] w-32 md:w-48 bg-white border border-charcoal p-2 md:p-3 shadow-lg hidden sm:block rotate-[-2deg]">
-                <div className="font-mono text-[8px] md:text-[10px] text-gray-500 mb-1">SALES REP</div>
-                <div className="font-sans text-[10px] md:text-xs font-bold text-charcoal">"Deal closed!"</div>
+            <div className="absolute top-[-2%] left-[2%] md:left-[8%] w-auto bg-white border border-charcoal p-2 md:p-3 shadow-lg hidden sm:block rotate-[-2deg]">
+                <div className="font-sans text-[10px] md:text-xs font-bold text-charcoal whitespace-nowrap">SALES REP: "Deal closed!"</div>
             </div>
 
             <div className="absolute bottom-[20%] right-[5%] w-32 md:w-48 bg-white border border-gray-300 p-2 md:p-3 shadow-sm hidden sm:block">
