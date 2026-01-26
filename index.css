@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FDFDFB;
+  --color-blueprint-blue: #2962FF;
+  --color-high-vis-orange: #FF6D00;
+  --color-charcoal: #333333;
+  --color-sketch-grey: #9CA3AF;
+
+  --font-family-sans: 'Inter', sans-serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+  --font-family-handwriting: 'Permanent Marker', cursive;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 7s ease-in-out infinite 1s;
+  --animate-float-slow: float 5s ease-in-out infinite 0.5s;
+  --animate-scan: scan 2.5s linear infinite;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+  --animate-fade-in-up-delay-1: fadeInUp 0.8s ease-out forwards 0.2s;
+  --animate-fade-in-up-delay-2: fadeInUp 0.8s ease-out forwards 1.2s;
+  --animate-spin-slow: spin 12s linear infinite;
+  --animate-note-fall: noteFall 0.8s ease-in forwards;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes scan {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes noteFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100px) rotate(25deg); opacity: 0; }
+}
+
+body {
+  background-color: #FDFDFB;
+  color: #333333;
+}
+
+.hazard-stripe {
+  background: repeating-linear-gradient(45deg,
+      #FF6D00,
+      #FF6D00 10px,
+      #E65100 10px,
+      #E65100 20px);
+}
+
+.grid-bg {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+}
