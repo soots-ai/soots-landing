@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Soots | Redirect</title>
+    <meta name="robots" content="noindex" />
+    <script>
+      (function () {
+        const { origin, pathname, search, hash, hostname } = window.location;
+        const segments = pathname.split('/').filter(Boolean);
+        const isGithubIo = hostname.endsWith('github.io');
+        const base = isGithubIo && segments.length > 0 ? `/${segments[0]}` : '';
+        const path = pathname.replace(base, '') || '/';
+
+        const redirectUrl = `${origin}${base}/?path=${encodeURIComponent(`${path}${search}${hash}`)}`;
+        window.location.replace(redirectUrl);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
