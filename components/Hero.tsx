@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from './ui/Button';
 import { Mail, Mic, ArrowDown, CheckSquare, Layers } from 'lucide-react';
+import type { IcpContent } from '../icpContent';
 
 interface HeroProps {
   onOpenPopup: () => void;
+  content: IcpContent['hero'];
 }
 
-const ROTATING_TERMS = [
-  "Delivery Teams",
-  "Onboarding Teams",
-  "Implementation Teams",
-  "Account Managers",
-  "Project Managers",
-  "Customer Success"
-];
-
-export const Hero: React.FC<HeroProps> = ({ onOpenPopup }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenPopup, content }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const rotatingTerms = content.rotatingTerms.length > 0 ? content.rotatingTerms : ['Teams'];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,17 +20,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPopup }) => {
       // Wait for animation to finish before swapping state
       setTimeout(() => {
         setIsAnimating(false);
-        setCurrentIndex((prev) => (prev + 1) % ROTATING_TERMS.length);
+        setCurrentIndex((prev) => (prev + 1) % rotatingTerms.length);
       }, 800); // Matches animation duration
 
     }, 3000); // Cycle every 3 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [rotatingTerms.length]);
 
-  const currentTerm = ROTATING_TERMS[currentIndex];
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [rotatingTerms]);
+
+  const currentTerm = rotatingTerms[currentIndex];
   // Calculate next term safely
-  const nextTerm = ROTATING_TERMS[(currentIndex + 1) % ROTATING_TERMS.length];
+  const nextTerm = rotatingTerms[(currentIndex + 1) % rotatingTerms.length];
 
   return (
     <div className="relative w-full min-h-screen flex items-center bg-cream grid-bg pt-24 pb-12 overflow-hidden">
@@ -46,22 +44,35 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPopup }) => {
         <div className="w-full md:w-1/2 flex flex-col justify-center relative z-20 md:pr-12 lg:pr-16 mb-12 md:mb-0">
           <div className="inline-block border border-blueprint-blue/30 bg-blueprint-blue/5 px-3 py-1 mb-6 w-max">
             <span className="font-mono text-xs font-bold text-blueprint-blue tracking-widest uppercase">
-              STATUS: ACCEPTING PILOT PARTNERS FOR Q1 2026
+              {content.status}
             </span>
           </div>
 
-          <h1 className="text-5xl lg:text-7xl font-sans font-extrabold text-charcoal mb-8 leading-[1.1]">
-            Don’t Start <br />
-            <span className="relative">
-              From Scratch.
-              <svg className="absolute -bottom-2 left-0 w-full h-3 text-high-vis-orange" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.00025 7.00005C50.6015 3.7381 120.306 -1.26875 198.003 3.50005" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-              </svg>
+          <h1 className="text-[clamp(1.9rem,3.4vw,3.1rem)] lg:text-[clamp(2.2rem,2.6vw,3.2rem)] font-sans font-extrabold text-charcoal mb-8 leading-[1.2] max-w-lg">
+            <span className="whitespace-nowrap">
+              {content.headline.line1} {content.headline.line2}
+            </span>
+            <br />
+            <span className="relative inline-block group mt-2">
+              {/* Corner brackets */}
+              <span className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-high-vis-orange"></span>
+              <span className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-high-vis-orange"></span>
+              <span className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-high-vis-orange"></span>
+              <span className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-high-vis-orange"></span>
+              
+              {/* Text */}
+              <span className="relative px-3 py-0.5 text-high-vis-orange font-black border-2 border-high-vis-orange/20 bg-high-vis-orange/5 whitespace-nowrap">
+                {content.headline.highlight}
+              </span>
             </span>
           </h1>
 
           <div className="text-lg font-sans text-gray-600 mb-10 max-w-2xl leading-relaxed border-l-4 border-gray-200 pl-6 block">
-            <span>The operational intelligence layer that bridges the gap between <span className="font-bold text-charcoal">Sales Teams</span> and</span>
+            <span>
+              {content.subheadLead}{' '}
+              <span className="font-bold text-charcoal">{content.subheadHighlight}</span>{' '}
+              {content.subheadConnector}
+            </span>
 
             {/* Sticky Note Stack Container */}
             <div className="relative inline-block w-[240px] h-[40px] align-middle ml-2">
@@ -91,15 +102,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPopup }) => {
 
 
             <span className="block mt-4 font-mono text-sm text-blueprint-blue w-full">
-            // Sales Data to Operational Plan
+              {content.subheadTail}
             </span>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button onClick={onOpenPopup}>REQUEST EARLY ACCESS</Button>
+            <Button onClick={onOpenPopup}>{content.ctaLabel}</Button>
             <div className="flex items-center gap-2 px-4 py-2 opacity-60">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="font-mono text-xs">Pilot slots available</span>
+              <span className="font-mono text-xs">{content.ctaNote}</span>
             </div>
           </div>
         </div>

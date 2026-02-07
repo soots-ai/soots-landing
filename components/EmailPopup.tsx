@@ -1,13 +1,15 @@
 import React, { useState, FormEvent } from 'react';
 import { X, Check } from 'lucide-react';
 import { Button } from './ui/Button';
+import type { IcpContent } from '../icpContent';
 
 interface EmailPopupProps {
     isOpen: boolean;
     onClose: () => void;
+    content: IcpContent['emailPopup'];
 }
 
-export const EmailPopup: React.FC<EmailPopupProps> = ({ isOpen, onClose }) => {
+export const EmailPopup: React.FC<EmailPopupProps> = ({ isOpen, onClose, content }) => {
     const [email, setEmail] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
@@ -96,11 +98,11 @@ export const EmailPopup: React.FC<EmailPopupProps> = ({ isOpen, onClose }) => {
                 </button>
 
                 <h3 className="text-2xl font-sans font-bold text-charcoal mb-2">
-                    Get in Touch
+                    {content.title}
                 </h3>
 
                 <p className="font-mono text-sm text-gray-500 mb-8">
-                    // PILOT PROGRAM INQUIRY
+                    {content.subtitle}
                 </p>
 
                 {isSuccess ? (

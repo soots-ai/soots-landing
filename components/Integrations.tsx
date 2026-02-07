@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Section } from './ui/Section';
 import { Database, Server, Globe, Cpu, ArrowUpRight } from 'lucide-react';
+import type { IcpContent } from '../icpContent';
 
 // --- SVG LOGO COMPONENTS ---
 
@@ -119,7 +120,11 @@ const getSvgCoords = (angleInDegrees: number, radius: number) => {
 
 // --- MAIN COMPONENT ---
 
-export const Integrations: React.FC = () => {
+interface IntegrationsProps {
+  content: IcpContent['integrations'];
+}
+
+export const Integrations: React.FC<IntegrationsProps> = ({ content }) => {
 
   // Radius settings
   const ORBIT_RADIUS_PERCENT = 38;
@@ -133,10 +138,10 @@ export const Integrations: React.FC = () => {
       {/* Header */}
       <div className="text-center mb-16 relative z-10 max-w-4xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-sans font-bold text-charcoal mb-6">
-          The Intelligence Layer that <br />connects your existing data sources.
+          {content.title}
         </h2>
         <p className="text-lg text-gray-600 font-sans max-w-2xl mx-auto leading-relaxed">
-          Soots acts as an ever-growing brain of your customer. We ingest unstructured data from your entire ecosystem, without replacing a single tool.
+          {content.description}
         </p>
       </div>
 
@@ -258,27 +263,27 @@ export const Integrations: React.FC = () => {
           <div className="flex items-center gap-2 text-left md:border-r border-gray-300 border-b md:border-b-0 py-4 md:py-0 md:pr-12 w-full md:w-auto flex-1 justify-start">
             <Server size={20} className="text-gray-400 flex-shrink-0" />
             <div>
-              <div className="font-bold text-xs text-charcoal">ZERO MIGRATION</div>
-              <div className="text-[10px] text-gray-500 font-mono">Keep your database</div>
+              <div className="font-bold text-xs text-charcoal">{content.footer[0]?.title}</div>
+              <div className="text-[10px] text-gray-500 font-mono">{content.footer[0]?.description}</div>
             </div>
           </div>
           <div className="flex items-center gap-2 text-left md:border-r border-gray-300 border-b md:border-b-0 py-4 md:py-0 md:pr-12 w-full md:w-auto flex-1 justify-start">
             <Globe size={20} className="text-gray-400 flex-shrink-0" />
             <div>
-              <div className="font-bold text-xs text-charcoal">ZERO TRAINING</div>
-              <div className="text-[10px] text-gray-500 font-mono">Teams use existing tools</div>
+              <div className="font-bold text-xs text-charcoal">{content.footer[1]?.title}</div>
+              <div className="text-[10px] text-gray-500 font-mono">{content.footer[1]?.description}</div>
             </div>
           </div>
           <div className="flex items-center gap-2 text-left w-full md:w-auto flex-1 justify-start py-4 md:py-0">
             <ArrowUpRight size={20} className="text-high-vis-orange flex-shrink-0" />
             <div>
-              <div className="font-bold text-xs text-charcoal">INSTANT VALUE</div>
-              <div className="text-[10px] text-gray-500 font-mono">Day 1 Intelligence</div>
+              <div className="font-bold text-xs text-charcoal">{content.footer[2]?.title}</div>
+              <div className="text-[10px] text-gray-500 font-mono">{content.footer[2]?.description}</div>
             </div>
           </div>
         </div>
         <p className="mt-8 font-mono text-sm text-gray-400 uppercase tracking-widest">
-            // UNIVERSAL DATA INGESTION
+            {content.footerTag}
         </p>
       </div>
 

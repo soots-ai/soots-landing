@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Hero } from './components/Hero';
 import { ProblemSplit } from './components/ProblemSplit';
 import { PainTimeline } from './components/PainTimeline';
@@ -7,9 +7,12 @@ import { RiskDetection } from './components/RiskDetection';
 import { Integrations } from './components/Integrations';
 import { Footer } from './components/Footer';
 import { EmailPopup } from './components/EmailPopup';
+import { getIcpKeyFromPath, ICP_CONTENT } from './icpContent';
 
 export default function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const icpKey = useMemo(() => getIcpKeyFromPath(window.location.pathname), []);
+  const content = ICP_CONTENT[icpKey];
 
   const togglePopup = () => setIsPopupOpen(!isPopupOpen);
 
@@ -27,17 +30,21 @@ export default function App() {
       </nav>
 
       <main>
-        <Hero onOpenPopup={togglePopup} />
-        <ProblemSplit />
-        <PainTimeline />
-        <HowItWorks />
-        <RiskDetection />
-        <Integrations />
+        <Hero content={content.hero} onOpenPopup={togglePopup} />
+        <ProblemSplit content={content.problemSplit} />
+        <PainTimeline content={content.painTimeline} />
+        <RiskDetection content={content.riskDetection} />
+        <HowItWorks content={content.howItWorks} />
+        <Integrations content={content.integrations} />
       </main>
 
-      <Footer onOpenPopup={togglePopup} />
+      <EmailPopup
+        content={content.emailPopup}
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+      />
 
-      <EmailPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+      <Footer content={content.footer} onOpenPopup={togglePopup} />
     </div>
   );
 }
