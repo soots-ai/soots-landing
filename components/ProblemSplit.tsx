@@ -1,10 +1,21 @@
 import React from 'react';
+import { AlertTriangle, CheckSquare, Clock, FileText, Layers, MessageSquareWarning, TrendingDown } from 'lucide-react';
 import { Section } from './ui/Section';
 import type { IcpContent } from '../icpContent';
 
 interface ProblemSplitProps {
   content: IcpContent['problemSplit'];
 }
+
+const STAT_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+  alert: AlertTriangle,
+  check: CheckSquare,
+  clock: Clock,
+  file: FileText,
+  layers: Layers,
+  message: MessageSquareWarning,
+  trendDown: TrendingDown
+};
 
 export const ProblemSplit: React.FC<ProblemSplitProps> = ({ content }) => {
   return (
@@ -113,12 +124,21 @@ export const ProblemSplit: React.FC<ProblemSplitProps> = ({ content }) => {
             key={stat.label}
             className={`p-3 md:p-8 text-center ${index < content.stats.length - 1 ? 'border-r border-gray-300' : ''} ${index === 1 ? 'bg-orange-50' : ''}`}
           >
-            <div className={`text-2xl md:text-4xl font-bold font-mono mb-1 md:mb-2 ${index === 1 ? 'text-high-vis-orange' : 'text-charcoal'}`}>
-              {stat.value}
+            <div className="flex items-center justify-center mb-1 md:mb-2">
+              {(() => {
+                const Icon = STAT_ICONS[stat.icon];
+                const colorClass = index === 1 ? 'text-high-vis-orange' : 'text-charcoal';
+                return Icon ? <Icon className={`w-6 h-6 md:w-10 md:h-10 ${colorClass}`} /> : null;
+              })()}
             </div>
             <div className="text-[9px] md:text-xs font-sans uppercase tracking-widest text-gray-500 leading-tight">
               {stat.label}
             </div>
+            {stat.subtext ? (
+              <div className="mt-1 text-[9px] md:text-xs font-mono text-gray-400 leading-snug">
+                {stat.subtext}
+              </div>
+            ) : null}
           </div>
         ))}
       </div>

@@ -46,7 +46,7 @@ export interface IcpContent {
     topCard: string;
     bottomCardLabel: string;
     bottomCardQuote: string;
-    stats: Array<{ value: string; label: string }>;
+    stats: Array<{ icon: string; label: string; subtext?: string }>;
   };
   painTimeline: {
     title: string;
@@ -126,9 +126,9 @@ export const ICP_CONTENT: Record<IcpKey, IcpContent> = {
       bottomCardLabel: 'DELIVERY',
       bottomCardQuote: '"What exactly was agreed — and why?"',
       stats: [
-        { value: '↑', label: 'Rework & clarification' },
-        { value: '↓', label: 'Delivery speed' },
-        { value: '↑', label: 'Expectation risk' }
+        { icon: 'message', label: 'Rework & clarification', subtext: 'Teams re-ask what was already agreed.' },
+        { icon: 'clock', label: 'Delivery speed', subtext: 'Starts slip while context is rebuilt.' },
+        { icon: 'alert', label: 'Expectation risk', subtext: 'Misalignment shows up at kickoff.' }
       ]
     },
     painTimeline: {
@@ -249,9 +249,9 @@ export const ICP_CONTENT: Record<IcpKey, IcpContent> = {
       bottomCardLabel: 'CS',
       bottomCardQuote: '"Where’s the decision trail — what was agreed and why?"',
       stats: [
-        { value: '↑', label: 'Renewal risk' },
-        { value: '↓', label: 'Trust at critical moments' },
-        { value: '↑', label: 'Time spent reconstructing' }
+        { icon: 'alert', label: 'Renewal risk', subtext: 'Commitments drift without a record.' },
+        { icon: 'check', label: 'Trust at critical moments', subtext: 'Customers lose confidence fast.' },
+        { icon: 'clock', label: 'Time spent reconstructing', subtext: 'CS burns hours chasing history.' }
       ]
     },
     painTimeline: {
@@ -371,9 +371,9 @@ export const ICP_CONTENT: Record<IcpKey, IcpContent> = {
       bottomCardLabel: 'OPS',
       bottomCardQuote: '"Why did teams produce different outcomes?"',
       stats: [
-        { value: '↑', label: 'Rework load' },
-        { value: '↑', label: 'Cross-team clarifications' },
-        { value: '↑', label: 'Systemic drift' }
+        { icon: 'layers', label: 'Rework load', subtext: 'Teams repeat decisions in parallel.' },
+        { icon: 'message', label: 'Cross-team clarifications', subtext: 'Alignment meetings multiply.' },
+        { icon: 'trendDown', label: 'Systemic drift', subtext: 'Execution diverges from intent.' }
       ]
     },
     painTimeline: {
@@ -493,9 +493,9 @@ export const ICP_CONTENT: Record<IcpKey, IcpContent> = {
       bottomCardLabel: 'DELIVERY',
       bottomCardQuote: '"Where is that documented — and what does it cost?"',
       stats: [
-        { value: '↑', label: 'Margin pressure' },
-        { value: '↑', label: 'Change requests' },
-        { value: '↑', label: 'Kickoff delays' }
+        { icon: 'trendDown', label: 'Margin pressure', subtext: 'Scope gaps get priced late.' },
+        { icon: 'message', label: 'Change requests', subtext: 'New asks surface after handoff.' },
+        { icon: 'clock', label: 'Kickoff delays', subtext: 'Teams pause to re-litigate.' }
       ]
     },
     painTimeline: {
@@ -615,9 +615,9 @@ export const ICP_CONTENT: Record<IcpKey, IcpContent> = {
       bottomCardLabel: 'REVOPS',
       bottomCardQuote: '"Based on what evidence — and whose criteria?"',
       stats: [
-        { value: '↑', label: 'Forecast variance' },
-        { value: '↑', label: 'Pipeline rework' },
-        { value: '↑', label: 'Post-close fallout' }
+        { icon: 'trendDown', label: 'Forecast variance', subtext: 'Commit stages lose meaning.' },
+        { icon: 'layers', label: 'Pipeline rework', subtext: 'Deals get re-classified late.' },
+        { icon: 'alert', label: 'Post-close fallout', subtext: 'Delivery reality breaks forecasts.' }
       ]
     },
     painTimeline: {
@@ -736,9 +736,9 @@ export const ICP_CONTENT: Record<IcpKey, IcpContent> = {
       bottomCardLabel: 'AI LEAD',
       bottomCardQuote: '"We don’t have coherent rationale."',
       stats: [
-        { value: '↑', label: 'Manual intervention' },
-        { value: '↑', label: 'Pilot stall risk' },
-        { value: '↑', label: 'Governance overhead' }
+        { icon: 'message', label: 'Manual intervention', subtext: 'Humans patch missing meaning.' },
+        { icon: 'alert', label: 'Pilot stall risk', subtext: 'Models pause without clarity.' },
+        { icon: 'file', label: 'Governance overhead', subtext: 'Audit trails are rebuilt by hand.' }
       ]
     },
     painTimeline: {
